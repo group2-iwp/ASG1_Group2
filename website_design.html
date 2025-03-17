@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Batu Clam International University</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+    /* General Styles */
+    body {
+        font-family: 'Kanit', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f8ff; /* Light blue background */
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        height: 100vh; /* Ensure full height */
+        overflow: hidden; /* Prevent scrolling */
+        background: url("https://aenui.org/wp-content/uploads/2014/07/university-background-04.jpg") no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    /* Header */
+    header {
+        background-color: #e6f2ff; /* Lighter blue */
+        display: flex;
+        text-decoration: bold;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; /* Center the items both vertically and horizontally */
+        height: 80px; /* Adjust the height */
+        width: 100%;
+        position: relative;
+        z-index: 1; /* Ensure header is above the navigation */
+    }
+
+     header > span { 
+        font-family: "Lilita";
+        background-color: #e6f2ff; /* Lighter blue */
+        padding: 15px;
+        text-align: center;
+        font-size: 40px;
+        color: #0056b3;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        opacity: 0; /* Initially hide both texts */
+        animation: fadeText 15s infinite;
+    }
+    /* First Header */
+    span:nth-child(1) {
+        animation: fadeInOut 15s infinite;
+    }
+
+    /* Second Header */
+    span:nth-child(2) {
+        animation: fadeInOut 15s infinite 7.5s; /* Delayed start for second header */
+    }
+
+    /* Keyframes for animation */
+    @keyframes fadeInOut {
+        0%, 100% {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        10%, 40% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        50%, 90% {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+    }
+
+    /* Navigation */
+    nav {
+        display: flex;
+        justify-content: center;
+        background-color: #cce5ff; /* Medium Light Blue */
+        height: 60px;
+        align-items: center;
+        position: fixed;
+        top: 80px; /* Adjusted to place navigation below the header */
+        width: 100%;
+        z-index: 2;
+        opacity: 0; /* Initially hidden */
+        animation: slideDown 1s forwards; /* Apply animation */
+        gap: 30px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #0056b3;
+        padding: 10px 20px;
+        font-weight: bold;
+    }
+
+    nav a:hover {
+        background-color: #99ccff;
+        border-radius: 5px;
+    }
+
+    /* Keyframes for Navigation Animation */
+    @keyframes slideDown {
+        0% {
+            transform: translateY(-10px); /* Starts off-screen */
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0); /* End position */
+            opacity: 1;
+        }
+    }
+
+    body>button{animation: slideDown 1s forwards;}
+
+    /* Main Content */
+    main {
+        background-color: white;
+        padding: 20px;
+        margin: 100px auto 50px; /* Adjusted margin to extend above footer */
+        width: 70%;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        flex-grow: 1; /* Allow main content to take available space */
+        animation: slideDown 1s forwards;
+        position: relative;
+    }
+
+    /* Title Section in Main */
+    .main-title {
+        font-family: 'Lilita One', sans-serif;
+        font-size: 40px;
+        margin-top: 30px;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Footer */
+    footer {
+        background-color: #cce5ff;
+        color: #0056b3;
+        padding: 10px;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;  /* Horizontally center */
+        align-items: center;      /* Vertically center */
+        animation: slideDown 1s forwards;
+        gap: 30px;
+    }
+
+    footer a {
+        text-decoration: none;
+        color: #0056b3;
+        padding: 10px 20px;
+        font-weight: bold;
+    }
+
+    footer a:hover {
+        background-color: #99ccff;
+        border-radius: 100px;
+    }
+
+    /* Font Awesome Icons */
+    .social-icon {
+        font-size: 24px;
+        margin: 0 10px;
+        color: #0056b3;
+    }
+
+    footer a {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Card Styles */
+    .card {
+        position: absolute;
+        left: 50px;
+        top: 150px;
+        width: 300px;
+        height: 350px;
+        perspective: 1000px;
+        cursor: pointer;
+    }
+
+    .card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+    }
+
+    .card:hover .card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        font-size: 18px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Front side styles */
+    .card-front {
+        background: #F0F8FF;
+        color: #0056b3;
+        font-weight: bold;
+        font-size: 22px;
+    }
+
+    /* Back side styles */
+    .card-back {
+        background: #7CB9E8;
+        color: white;
+        font-size: 20px;
+        transform: rotateY(180deg);
+        display: flex;
+        flex-direction: column;  /* Arrange children vertically */
+        justify-content: space-evenly; /* Distribute space evenly */
+        padding: 20px;
+    }
+
+    .card-back a {
+        text-decoration: none;
+        color: royalblue;
+        font-size: 25px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .card-back a:hover {
+        text-decoration: underline;
+    }
+
+    /* Specific card designs */
+    .card1 .card-front {
+        background-color: #A9C9FF;
+        color: #004085;
+    }
+
+    .card2 .card-front {
+        background-color: #FFD9A8;
+        color: #D13C00;
+    }
+
+    .card3 .card-front {
+        background-color: #D1F4C5;
+        color: #3A7F37;
+    }
+
+    </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <span>BATU CLAM NATIONAL UNIVERSITY</span>
+        <span>Forging Minds Shaping Futures</span>
+    </header>
+    <nav>
+        <a href="https://group2-iwp.github.io/Main_website/website_design.html"><i class="fas fa-home"></i> Home</a>
+        <a href="#"><i class="fas fa-info-circle"></i> About</a>
+        <a href="#"><i class="fas fa-cogs"></i> Services</a>
+        <a href="#"><i class="fas fa-phone-alt"></i> Contact</a>
+    </nav>
+<main>
+    <div class="main-title">Welcome to Batu Clam National University</div>
+    <!-- Course Card -->
+    <div class="card card1" style="left: 50px;">
+        <div class="card-inner">
+            <div class="card-front">📚 Pick Your Courses</div>
+            <div class="card-back">
+                <p>Choose from a wide variety of courses that suit your academic interests. Start exploring now!</p>
+                <a href="https://group2-iwp.github.io/draganddrop/GRP_2_ASG1_TASK2_drag-and-drop.html">Start Picking Courses</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Location Card -->
+    <div class="card card2" style="left: 520px;">
+        <div class="card-inner">
+            <div class="card-front">📍 Find Us Here</div>
+            <div class="card-back">
+                <p>Visit Batu Clam International University! We're located at a prime location, easily accessible from various points.</p>
+                <a href="https://group2-iwp.github.io/geolocation/GRP_2_ASG1_TASK2_geolocation.html">View Map</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Information Card -->
+    <div class="card card3" style="left: 990px;">
+        <div class="card-inner">
+            <div class="card-front">🔍 Server Side Event</div>
+            <div class="card-back">
+                <p>Want to know about our server updates of our group? Click below for the server updates of Group 2.</p>
+                <a href="https://group2-iwp.github.io/server_side_event/GRP_2_ASG1_TASK2_sse.html">Learn More</a>
+            </div>
+        </div>
+    </div>
+</main>
+    <footer>
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook social-icon"></i> Facebook</a> |
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter social-icon"></i> Twitter</a>|   
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin social-icon"></i> LinkedIn</a>
+    </footer>
+</body>
+</html>
